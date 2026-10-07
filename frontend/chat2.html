@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#f0f2f5">
+    <title>Chat System</title>
+    <link rel="stylesheet" href="./css/chat2.css">
+</head>
+<body>
+    <div class="chat-container" id="chatContainer">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="profile-image">
+                    <img id="image" src="./images/Default-Icon.jpg" alt="default-profile">
+                </div>
+                <div class="user-info">
+                    <h2 id="registered-user-name">Ananya</h2>
+                    <p class="my-status">Online</p>
+                </div>
+                <div class="menu-container">
+                    <button class="three-dots" id="threeDots" type="button">
+                        ⋮
+                    </button>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="profile.html">Profile</a>
+                        <a href="test.html">Test</a>
+                        <a href="#" id="logoutLink" class="danger">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <div class="search-box">
+                <div class="search-field">
+                    <input id="userSearchInput" type="text" placeholder="Search users" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Search users">
+                    <button id="userSearchClear" class="search-clear" type="button" title="Clear search" aria-label="Clear search" hidden>
+                        &times;
+                    </button>
+                </div>
+            </div>
+            <div class="sidebar-tabs">
+                <button id="chatsTab" class="sidebar-tab active" type="button">
+                    Chats
+                </button>
+                <button id="requestsTab" class="sidebar-tab" type="button">
+                    Requests
+                </button>
+                <button id="blockedTab" class="sidebar-tab" type="button">
+                    Blocked
+                </button>
+            </div>
+            <div class="chat-list" id="chatList">
+            </div>
+        </div>
+        <div class="chat-area">
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-inner">
+                    <div class="welcome-art" aria-hidden="true">
+                        <div class="bubble b-received">Hey! Are you free today?</div>
+                        <div class="bubble b-sent">Yes, let's talk &#128522;</div>
+                        <div class="bubble b-typing">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <p class="welcome-greeting">
+                        <span id="welcomeGreeting">Hello,</span>
+                        <strong id="welcomeName"></strong>
+                    </p>
+                    <h1>Welcome to our Chatting System</h1>
+                    <p class="welcome-sub">
+                        Pick a chat from the list to start talking, or find a new friend.
+                    </p>
+                    <div class="welcome-actions">
+                        <button type="button" id="welcomeFind" class="welcome-btn primary">
+                            Find people
+                        </button>
+                        <button type="button" id="welcomeRequests" class="welcome-btn">
+                            Friend requests
+                        </button>
+                    </div>
+                    <ul class="welcome-features">
+                        <li><span>&#128172;</span>Private one-to-one chats</li>
+                        <li><span>&#128247;</span>Share photos and videos</li>
+                        <li><span>&#128274;</span>Messages stored encrypted</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="chat-header">
+                <button type="button" id="backButton" class="back-button" title="Back to chats" aria-label="Back to chats">
+                    &#8592;
+                </button>
+                <div class="profile-image">
+                    <img id="chatProfileImage" src="./images/Default-Icon.jpg" alt="profile">
+                </div>
+                <div class="chat-user-details">
+                    <h3>Select a chat</h3>
+                    <p></p>
+                </div>
+                <div class="menu-container chat-menu" id="chatMenu" style="display:none;">
+                    <button class="three-dots" id="chatMenuButton" type="button" title="Chat options">
+                        ⋮
+                    </button>
+                    <div class="dropdown-menu" id="chatDropdown">
+                        <a href="#" id="viewProfileLink">View profile</a>
+                        <a href="#" id="deleteChatLink">Delete chat</a>
+                        <a href="#" id="removeFriendLink">Remove friend</a>
+                        <a href="#" id="blockUserLink" class="danger">Block user</a>
+                    </div>
+                </div>
+            </div>
+            <div class="messages-container"></div>
+            <div class="message-input" id="messageBar">
+                <button type="button" id="attachButton" class="icon-btn" title="Send a photo or video" aria-label="Send a photo or video">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.4 11.1l-8.5 8.5a5.5 5.5 0 0 1-7.8-7.8l8.5-8.5a3.7 3.7 0 0 1 5.2 5.2l-8.5 8.5a1.8 1.8 0 0 1-2.6-2.6l7.8-7.8"/></svg>
+                </button>
+                <input id="fileInput" type="file" accept="image/jpeg,image/png,image/gif,image/webp,video/mp4,video/webm,video/quicktime,video/ogg" hidden>
+                <input id="messageInput" type="text" placeholder="Type a message" autocomplete="off">
+                <button type="button" id="micButton" class="round-btn" title="Record a voice message" aria-label="Record a voice message">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 14.5a3.5 3.5 0 0 0 3.5-3.5V6a3.5 3.5 0 0 0-7 0v5a3.5 3.5 0 0 0 3.5 3.5zm6-3.5a1 1 0 1 0-2 0 4 4 0 0 1-8 0 1 1 0 1 0-2 0 6 6 0 0 0 5 5.9V19H9.5a1 1 0 1 0 0 2h5a1 1 0 1 0 0-2H13v-2.1A6 6 0 0 0 18 11z"/></svg>
+                </button>
+                <button type="button" id="sendButton" class="round-btn" title="Send" aria-label="Send" hidden>
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3.4 20.4l17.5-7.5a1 1 0 0 0 0-1.8L3.4 3.6a1 1 0 0 0-1.4 1.2L4 10.5l9 1.5-9 1.5-2 5.7a1 1 0 0 0 1.4 1.2z"/></svg>
+                </button>
+                <div class="recorder" id="recorderBar">
+                    <button type="button" id="recCancel" class="icon-btn" title="Discard" aria-label="Discard recording">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 10v6M14 10v6"/></svg>
+                    </button>
+                    <span class="rec-dot"></span>
+                    <span class="rec-timer" id="recTimer">0:00</span>
+                    <span class="rec-hint">Recording&hellip;</span>
+                    <button type="button" id="recSend" class="round-btn" title="Send voice message" aria-label="Send voice message">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3.4 20.4l17.5-7.5a1 1 0 0 0 0-1.8L3.4 3.6a1 1 0 0 0-1.4 1.2L4 10.5l9 1.5-9 1.5-2 5.7a1 1 0 0 0 1.4 1.2z"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7/bundles/stomp.umd.min.js"></script>
+    <script src="./js/chat.js"></script>
+</body>
+</html>

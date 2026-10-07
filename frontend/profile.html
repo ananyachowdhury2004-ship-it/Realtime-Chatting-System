@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="./css/profile.css">
+</head>
+<body>
+<div class="profile-container">
+    <div class="profile-card">
+        <h1>My Profile</h1>
+        <div class="profile-picture-container">
+            <img id="profileImage" src="./images/Default-Icon.jpg" alt="Profile Picture" class="profile-image">
+            <input type="file" id="profileImageInput" accept="image/jpeg,image/png,image/gif,image/webp" style="display: none;">
+            <button type="button" id="changeProfilePictureBtn" class="change-picture-btn">
+                Change Profile Picture
+            </button>
+            <button type="button" id="removeProfilePictureBtn" class="remove-picture-btn">
+                Remove Profile Picture
+            </button>
+        </div>
+        <div class="profile-info">
+            <div class="info-row">
+                <label>Username</label>
+                <span id="username">Loading...</span>
+            </div>
+            <div class="info-row">
+                <label>Display Name</label>
+                <span id="displayName">Loading...</span>
+            </div>
+            <div class="info-row">
+                <label>Status</label>
+                <span id="onlineStatus">Loading...</span>
+            </div>
+        </div>
+        <div class="privacy-box">
+            <h2>Last seen &amp; online</h2>
+            <p class="privacy-hint">
+                Choose what your friends can see. Only you can change this.
+            </p>
+            <label class="privacy-option">
+                <input type="radio" name="presenceMode" value="LAST_SEEN">
+                <span>
+                    <strong>Last seen</strong>
+                    <small>Friends see &ldquo;Online&rdquo;, and the time you were last online</small>
+                </span>
+            </label>
+            <label class="privacy-option">
+                <input type="radio" name="presenceMode" value="ONLINE_ONLY">
+                <span>
+                    <strong>Online / offline</strong>
+                    <small>Friends see only &ldquo;Online&rdquo; or &ldquo;Offline&rdquo;, never the time</small>
+                </span>
+            </label>
+            <label class="privacy-option">
+                <input type="radio" name="presenceMode" value="NOTHING">
+                <span>
+                    <strong>Nothing</strong>
+                    <small>Friends see no status at all</small>
+                </span>
+            </label>
+            <p class="privacy-message" id="privacyMessage"></p>
+        </div>
+        <button type="button" id="backButton" class="back-btn">
+            Back to Chat
+        </button>
+    </div>
+</div>
+<script src="./js/profile.js"></script>
+</body>
+</html>

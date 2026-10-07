@@ -1,0 +1,12 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: #007bff; font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+.register { width: 400px; background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
+h2 { text-align: center; margin-bottom: 25px; color: #007bff; }
+label { display: block; margin-bottom: 3px; font-weight: bold; color: #007bff; font-size: 14px; }
+input, select { width: 100%; padding: 8px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 15px; }
+input:focus, select:focus { outline: none; border-color: #007bff; }
+button { width: 100%; padding: 12px; background-color: #007bff; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
+button:hover { background-color: #0056b3; }
+.login { text-align: center; margin-top: 10px; color: #555; font-size: 15px; }
+.login a { color: #007bff; text-decoration: none; font-weight: bold; }
+.login a:hover { text-decoration: underline; }
